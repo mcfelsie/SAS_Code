@@ -1,0 +1,5 @@
+data data1 data2;
+set og_data;
+if condition1 and condition2 then output data1;
+else output data2;
+run;
