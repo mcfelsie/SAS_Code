@@ -1,0 +1,8 @@
+options nobyline; /* this comes before proc sgplot/sgpanel etc. */
+
+proc sgplot data=one;
+by var1;
+option nobyline;  /* or can write it within proc */
+etc....;
+
+run;
