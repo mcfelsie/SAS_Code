@@ -1,0 +1,4 @@
+proc datasets lib=diag noprint; 
+  delete name all your datasets here;
+run;
+quit;
