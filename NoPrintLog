@@ -1,0 +1,7 @@
+/* Note: The first proc printto turns the log off and the second turns it back on. */
+filename junk dummy;
+proc printto  log=junk; run; /* turn off log*/
+
+/*INSERT YOUR CODE HERE*/ 
+
+proc printto; run; /* turn on log*/
