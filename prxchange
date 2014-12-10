@@ -1,0 +1,12 @@
+/* Here’s the data step form and macro form.  
+   Sample has ‘&/\’ which it replaces with ‘_’.  */
+
+%let file = %nrstr(test&more\test/.xls) ;
+
+data test ; 
+  retain test_str "&file." ;
+  newstr = prxchange('s/[&\\\/]/_/',-1,test_str) ;
+  put newstr=; 
+ run;
+%let pattern = %sysfunc(prxParse(s/[&\\\/]/_/)) ;
+%let newstr = %sysfunc(prxchange(&pattern ,-1,%str(&file) )) ; %put newstr=&newstr ;
