@@ -1,7 +1,7 @@
 /* This data is the Example 6.2 Fatigue Life Alloy T7987
- * This data is right censored data with 67 specimens failing before 
- * 30000 cycles and 5 lasting the entire test without failing
- * This demonstrates how to use different procedures to estimate
+   This data is right censored data with 67 specimens failing before 
+   30000 cycles and 5 lasting the entire test without failing
+   This demonstrates how to use different procedures to estimate
 */
 
 data alloy;
