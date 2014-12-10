@@ -1,0 +1,23 @@
+/*macro creates subsetit dataset which is used for generating graphs*/
+
+%macro subcategories(sub, unit);
+
+data addit;
+subcategory=&sub;
+unit=&unit;
+do year = 2004 to 2010 by 0.1;
+output;
+end;
+run;
+
+data subsetit; set subsetit addit; run;
+
+%mend subcategories;
+
+/*Executes %subcategories macro for the significant subcats/units from 'one' dataset*/
+data _null_;
+set one;
+call execute ('%subcategories(sub="'||subcategory||'", unit="'|| unit ||'");');
+run;
+
+
