@@ -1,0 +1,14 @@
+data modelfit2 (keep = subcategory full_log_likelihood ... scaled_pearson_X2);
+  set model fit;
+  by subcategory;
+  retain full_log_likelihood ... scaled_pearson_X2 . ;
+  select (Criterion); /*name of variable goes in () */
+  	when ("Scaled Deviance") scaled_deviance = ValueDF;
+	/* when Criterion = "Scaled Deviance", assign the value in ValueDF column 
+	   to a new variable called scaled_deviance */
+	when ("Scaled Pearson X2") scaled_pearson_X2 = ValueDF;
+	when ("Log Likelihood") log_likelihood = Value;
+	when ("Full Log Likelihood") full_log_likelihood = Value;
+	otherwise;
+  end;
+run; 
