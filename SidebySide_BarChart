@@ -1,0 +1,31 @@
+/* Labels an operator's response into the group variable */
+data categories;
+	set data;
+	if noidea = 1 then group=1;
+	else if possibleidea = 1 then group=2;
+	else if definiteidea = 1 then group=3;
+	else group=4;
+run;
+
+/* Formats group to show name (used to put the groups in desired order) */
+proc format;
+	value group
+	1='No Idea'
+	2='Possible Idea'
+	3='Definite Idea'
+	4='Undetermined';
+run;
+
+/* Panel plot */
+ods graphics on/imagename="Insert Image Name" ;
+ods listing sge=off style=statistical gpath="Insert gpath";
+proc sgpanel data=categories;
+   panelby vehicle_luggage / novarname sparse;
+   vbar group / group=vehicle_luggagetype groupdisplay=cluster clusterwidth=0.8;
+   rowaxis refticks=(values);
+   keylegend / title='' noborder;
+   format group group.;
+   label group = 'Operator Call';
+run;
+ods graphics off;
+ods listing close;
