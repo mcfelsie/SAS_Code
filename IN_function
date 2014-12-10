@@ -1,0 +1,5 @@
+data SEP_RAFT;
+set ukraft (in=uk) ussep;
+if uk then test = 'UK RAFT';
+else test = 'US SEP';
+run;
