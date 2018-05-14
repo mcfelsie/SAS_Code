@@ -31,4 +31,12 @@ data every_combination;
     output;
   end;
 run;
+/* N = 30 */
 
+proc sql;
+create table sql_combos as
+select *
+  from one, two;
+quit;
+/* N = 30 */
+/* note: the order of the records is different */
